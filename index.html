@@ -1,15 +1,235 @@
-<!-- Пример базового index.html для поддомена partyhost.alfaxgood.com -->
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PartyHost — Ведущий для ваших вечеринок</title>
+    <title>PartyHost — Идеальный ведущий для вечеринок</title>
+    <meta name="description" content="Мафия с голосовым ведущим, Шпион, Я никогда не, Бомба и Кто из нас в одном приложении.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0D0E15',
+                        card: '#1A1C29',
+                        neon: '#00F0FF',
+                        pink: '#FF0055',
+                        purple: '#7A00FF',
+                        orange: '#FF9900',
+                        lime: '#E1FF00'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0D0E15;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Интерактивный фоновый свет */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(122, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+            z-index: -2;
+        }
+
+        /* Свечение, следующее за курсором */
+        #cursor-glow {
+            position: fixed;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,0,85,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: opacity 0.3s;
+        }
+
+        /* Эффект матового стекла */
+        .glass-card {
+            background: rgba(26, 28, 41, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Плавное парение (исправлено) */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 6s ease-in-out 3s infinite;
+        }
+        .animate-float-fast {
+            animation: float 4s ease-in-out 1s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Неоновое свечение при наведении */
+        .hover-glow:hover {
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+        .glow-pink:hover { box-shadow: 0 0 25px rgba(255, 0, 85, 0.5); border-color: rgba(255, 0, 85, 0.8); }
+        .glow-neon:hover { box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); border-color: rgba(0, 240, 255, 0.8); }
+        .glow-orange:hover { box-shadow: 0 0 25px rgba(255, 153, 0, 0.5); border-color: rgba(255, 153, 0, 0.8); }
+        .glow-lime:hover { box-shadow: 0 0 25px rgba(225, 255, 0, 0.5); border-color: rgba(225, 255, 0, 0.8); }
+    </style>
 </head>
-<body>
-    <h1>PartyHost App</h1>
-    <p>Скачать приложение для Android (APK) и ПК, или играть онлайн через браузер.</p>
-    <!-- Ссылка на политику конфиденциальности для Google Play -->
-    <a href="/privacy.html">Политика конфиденциальности</a>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <div class="bg-glow"></div>
+    <div id="cursor-glow"></div>
+
+    <!-- Навигация -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 py-4 px-6 flex justify-between items-center">
+        <div class="text-2xl font-black tracking-wider cursor-pointer">
+            <span class="text-neon">PARTY</span><span class="text-pink">HOST</span>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-bold text-gray-300">
+            <a href="#games" class="hover:text-neon transition">Игры</a>
+            <a href="#download" class="hover:text-pink transition">Скачать</a>
+            <a href="https://partyhost.alfaxgood.com/play" class="hover:text-purple transition">Играть онлайн</a>
+        </div>
+    </nav>
+
+    <!-- Главный экран (Hero) -->
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 pt-24 pb-12 relative">
+        <div class="relative z-10 max-w-4xl mx-auto mt-12">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Ваш карманный <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon via-purple to-pink animate-pulse">Ведущий Вечеринок</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                Забудьте про бумажки, карточки и споры о правилах. PartyHost сам раздаст роли, проследит за таймером и даже озвучит ночные фазы в Мафии!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#download" class="px-8 py-4 bg-pink text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-[0_0_20px_rgba(255,0,85,0.4)]">
+                    Скачать APK
+                </a>
+                <a href="https://partyhost.alfaxgood.com/play" class="px-8 py-4 glass-card border-neon text-neon rounded-2xl font-bold text-lg hover:bg-neon hover:text-dark transition shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                    🌐 Играть в браузере
+                </a>
+            </div>
+        </div>
+
+        <!-- ИСПРАВЛЕННЫЕ ДЕКОРАТИВНЫЕ КАРТОЧКИ -->
+        <!-- Вращение вынесено в родительский блок, а левитация во внутренний, чтобы трансформации не конфликтовали -->
+        <div class="absolute w-full max-w-6xl h-full top-0 left-1/2 -translate-x-1/2 pointer-events-none hidden lg:block z-0">
+            <!-- Левая карточка -->
+            <div class="absolute left-10 top-40 -rotate-12">
+                <div class="glass-card p-5 rounded-2xl border-purple animate-float w-48 shadow-[0_0_30px_rgba(122,0,255,0.2)]">
+                    <div class="text-4xl text-center mb-2">🕵️</div>
+                    <div class="text-center font-bold text-white">Шпион</div>
+                    <div class="text-center text-xs text-gray-400">Кто среди нас чужой?</div>
+                </div>
+            </div>
+            <!-- Правая карточка -->
+            <div class="absolute right-10 top-52 rotate-12">
+                <div class="glass-card p-5 rounded-2xl border-pink animate-float-delayed w-48 shadow-[0_0_30px_rgba(255,0,85,0.2)]">
+                    <div class="text-4xl text-center mb-2">🎭</div>
+                    <div class="text-center font-bold text-white">Мафия</div>
+                    <div class="text-center text-xs text-gray-400">Голосовой ведущий</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Секция Игр -->
+    <section id="games" class="py-20 px-6 relative z-10">
+        <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-white">Что внутри? 🎁</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Все карточки теперь имеют класс hover-glow и animate-float-fast (с разными задержками через CSS) -->
+            
+            <!-- Мафия -->
+            <div class="glass-card p-8 rounded-3xl hover-glow glow-pink group cursor-pointer border-t-4 border-t-pink transition-all animate-float">
+                <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition duration-300">🎭</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">Мафия (Авто-ведущий)</h3>
+                <p class="text-gray-400 text-sm">Вам больше не нужен живой ведущий! Телефон сам озвучит фазы: «Город засыпает...», примет решения ролей и подсчитает голоса.</p>
+            </div>
+
+            <!-- Шпион -->
+            <div class="glass-card p-8 rounded-3xl hover-glow glow-purple group cursor-pointer border-t-4 border-t-purple transition-all animate-float-delayed">
+                <div class="text-5xl mb-4 group-hover:scale-125 group-hover:-rotate-12 transition duration-300">🕵️</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">Шпион</h3>
+                <p class="text-gray-400 text-sm">Узнайте локацию или вычислите шпиона. Десятки встроенных паков (от фильмов до игр) + возможность создавать свои паки слов!</p>
+            </div>
+            
+            <!-- Я никогда не -->
+            <div class="glass-card p-8 rounded-3xl hover-glow glow-neon group cursor-pointer border-t-4 border-t-neon transition-all animate-float-delayed">
+                <div class="text-5xl mb-4 group-hover:scale-125 transition duration-300">🍻</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">Я никогда не...</h3>
+                <p class="text-gray-400 text-sm">От легких школьных историй до режима Флирт. Узнайте самые смешные секреты друзей. Встроенная рулетка штрафов!</p>
+            </div>
+
+            <!-- Бомба -->
+            <div class="glass-card p-8 rounded-3xl hover-glow glow-orange group cursor-pointer border-t-4 border-t-orange transition-all animate-float-fast">
+                <div class="text-5xl mb-4 group-hover:scale-125 transition duration-300">💣</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">Тик-Так-Бум</h3>
+                <p class="text-gray-400 text-sm">Назовите слово на заданную букву или тему и быстрее передайте телефон соседу, пока бомба не взорвалась в ваших руках.</p>
+            </div>
+
+            <!-- Кто из нас -->
+            <div class="glass-card p-8 rounded-3xl hover-glow glow-lime group cursor-pointer border-t-4 border-t-lime transition-all animate-float">
+                <div class="text-5xl mb-4 group-hover:scale-125 transition duration-300">👉</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">Кто из нас?</h3>
+                <p class="text-gray-400 text-sm">3... 2... 1... Указываем пальцем! Кто вероятнее всего уснет на вечеринке или станет миллионером? Узнайте, что о вас думают.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Секция Скачивания -->
+    <section id="download" class="py-20 bg-card/30 px-6 mt-10 relative z-10 border-t border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-6">Готовы к вечеринке?</h2>
+            <p class="text-gray-400 mb-10 text-lg">Установите приложение на телефон или играйте прямо через браузер на любом устройстве.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="/PartyHost.apk" class="px-8 py-4 bg-white text-dark rounded-xl font-bold hover:bg-gray-200 transition flex items-center justify-center gap-3 text-lg">
+                    <span class="text-2xl">🤖</span> Скачать для Android
+                </a>
+                <a href="https://partyhost.alfaxgood.com/play" class="px-8 py-4 bg-purple text-white rounded-xl font-bold hover:bg-opacity-80 transition flex items-center justify-center gap-3 text-lg shadow-[0_0_20px_rgba(122,0,255,0.4)]">
+                    <span class="text-2xl">🌐</span> Играть в Web
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="py-10 border-t border-white/5 text-center text-sm text-gray-500 relative z-10 bg-dark/80 backdrop-blur-md">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="privacy.html" class="hover:text-neon transition text-base">Политика конфиденциальности</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@alfaxgood.com&su=Вопрос по политике конфиденциальности&body=Я в лице..., хочу сообщить о проблеме / задать вопрос, по политике конфиденциальности Party Host (укажите детали)" target="_blank" class="hover:text-pink transition text-base">Поддержка</a>
+        </div>
+        <p class="font-bold tracking-widest text-gray-600">2026 AlfaXGood © — Все права защищены</p>
+    </footer>
+
+    <!-- Скрипт для интерактивного свечения мыши -->
+    <script>
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
 </body>
 </html>
