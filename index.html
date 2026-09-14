@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PartyHost — Идеальный ведущий для вечеринок</title>
+    <link rel="icon" href="/PartyHost/appicon.png" type="image/x-icon">
     <meta name="description" content="Мафия с голосовым ведущим, Шпион, Я никогда не, Бомба и Кто из нас в одном приложении.">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -122,10 +123,7 @@
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#download" class="px-8 py-4 bg-pink text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-[0_0_20px_rgba(255,0,85,0.4)]">
-                    Скачать APK
-                </a>
-                <a href="https://partyhost.alfaxgood.com/play" class="px-8 py-4 glass-card border-neon text-neon rounded-2xl font-bold text-lg hover:bg-neon hover:text-dark transition shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-                    🌐 Играть в браузере
+                    ▶️Играть
                 </a>
             </div>
         </div>
@@ -198,21 +196,39 @@
     </section>
 
     <!-- Секция Скачивания -->
-    <section id="download" class="py-20 bg-card/30 px-6 mt-10 relative z-10 border-t border-white/5">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-black mb-6">Готовы к вечеринке?</h2>
-            <p class="text-gray-400 mb-10 text-lg">Установите приложение на телефон или играйте прямо через браузер на любом устройстве.</p>
+<section id="download" class="py-20 bg-card/30 px-6 mt-10 relative z-10 border-t border-white/5">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-black mb-6">Готовы к вечеринке?</h2>
+        <p class="text-gray-400 mb-10 text-lg">Установите приложение на телефон или играйте прямо через браузер на любом устройстве.</p>
+        
+        <img src="/PartyHost/appicon.png" alt="PartyHost Icon" class="mx-auto mb-8 w-24 h-24 rounded-full shadow-lg">
+
+        <!-- Контейнер: на мобильных вертикально (w-full), на ПК горизонтально (sm:flex-row) -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
             
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="/PartyHost.apk" class="px-8 py-4 bg-white text-dark rounded-xl font-bold hover:bg-gray-200 transition flex items-center justify-center gap-3 text-lg">
-                    <span class="text-2xl">🤖</span> Скачать для Android
-                </a>
-                <a href="https://partyhost.alfaxgood.com/play" class="px-8 py-4 bg-purple text-white rounded-xl font-bold hover:bg-opacity-80 transition flex items-center justify-center gap-3 text-lg shadow-[0_0_20px_rgba(122,0,255,0.4)]">
-                    <span class="text-2xl">🌐</span> Играть в Web
-                </a>
-            </div>
+            <!-- Кнопка Google Play -->
+            <a href="https://play.google.com/store/apps/details?id=com.alfaxgood.partyhost" 
+               target="_blank" 
+               class="w-full sm:w-auto h-14 transition-transform hover:scale-105 active:scale-95 flex items-center justify-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                     alt="Get it on Google Play" 
+                     class="h-full w-auto object-contain">
+            </a>
+
+            <!-- Кнопка Играть в Web -->
+            <a href="https://partyhost.alfaxgood.com/play" 
+               class="w-full sm:w-auto h-14 px-8 bg-purple text-white rounded-xl font-bold hover:bg-opacity-90 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 text-lg shadow-[0_0_20px_rgba(122,0,255,0.4)] border border-white/10">
+                <!-- Современная SVG иконка глобуса -->
+                <svg class="w-6 h-6 text-white shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <span>Играть в Web</span>
+            </a>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Подвал -->
     <footer class="py-10 border-t border-white/5 text-center text-sm text-gray-500 relative z-10 bg-dark/80 backdrop-blur-md">
